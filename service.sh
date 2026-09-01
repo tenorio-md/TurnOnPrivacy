@@ -76,6 +76,7 @@ toggle_sensor_privacy() {
     fi
 }
 
+# Função que bloqueia os sensores, camera e microfone ao bloquear a tela
 lock_sensors() {
     SERVICE_CODE=$(get_service_code)
     [ -z "$SERVICE_CODE" ] && return 1
@@ -88,6 +89,7 @@ lock_sensors() {
     fi
 }
 
+# Função que desbloqueia os sensores ao desbloquear a tela
 unlock_sensors() {
     SERVICE_CODE=$(get_service_code)
     [ -z "$SERVICE_CODE" ] && return 1
