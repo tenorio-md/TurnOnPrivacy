@@ -1,6 +1,6 @@
 
 ## Objetivo
-Esse módulo foi feito pensando na melhoria da privacidade. Basicamente, ele altera algumas permissões do android ao bloquear/desbloquear a tela, aos quais alguns apps podem acessar.
+Esse módulo foi feito pensando na melhoria da privacidade. Basicamente, ele altera algumas permissões do android ao bloquear/desbloquear a tela, aos quais alguns apps podem, possivelmente, acessar.
 
 Exemplo:
 - Localização
