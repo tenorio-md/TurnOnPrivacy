@@ -3,12 +3,14 @@ MODDIR="${0%/*}"
 
 STATE_FILE="/data/local/tmp/sensor_privacy_state"
 
+# Gera a notificação do estado atual
 notify() {
     _TITLE="$1"
     _MSG="$2"
     su -lp 2000 -c "cmd notification post -S bigtext -t '$_TITLE' 'sensor_privacy' '$_MSG'"
 }
 
+# Obtem a versão do android para executar o módulo e alterar as permissões
 get_service_code() {
     case "$(getprop ro.build.version.release)" in
         13|14|15|16) echo 9 ;;
@@ -18,6 +20,7 @@ get_service_code() {
     esac
 }
 
+# Verifica o estado da tela para detectar se está desativada ou não
 get_screen_state() {
     _PWR=$(dumpsys power 2>/dev/null)
     if echo "$_PWR" | grep -qE "mWakefulness=Awake|mWakefulnessRaw=Awake"; then

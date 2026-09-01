@@ -1,4 +1,3 @@
-
 #!/system/bin/sh
 
 # Aguarda o serviço sensor_privacy estar disponível
@@ -19,7 +18,7 @@ if [ $ATTEMPT -eq $MAX_ATTEMPTS ]; then
     exit 1
 fi
 
-# Obtém versão do Android
+# Obtém versão do Android para executar e alterar as permissões
 ANDROID_VERSION=$(getprop ro.build.version.release)
 
 # Determina o código de chamada do serviço baseado na versão
