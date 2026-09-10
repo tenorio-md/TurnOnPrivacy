@@ -3,12 +3,14 @@ MODDIR="${0%/*}"
 
 STATE_FILE="/data/local/tmp/sensor_privacy_state"
 
+#============================
 # Gera a notificação do estado atual
-notify() {
-    _TITLE="$1"
-    _MSG="$2"
-    su -lp 2000 -c "cmd notification post -S bigtext -t '$_TITLE' 'sensor_privacy' '$_MSG'"
-}
+# notify() {
+    # _TITLE="$1"
+    # _MSG="$2"
+    # su -lp 2000 -c "cmd notification post -S bigtext -t '$_TITLE' 'sensor_privacy' '$_MSG'"
+# }
+#============================
 
 # Obtem a versão do android para executar o módulo e alterar as permissões
 get_service_code() {
@@ -40,13 +42,16 @@ get_screen_state() {
     echo "OFF"
 }
 
-set_battery_saver() {
+# ============================
+# Função que define e ativa o modo economia de energia ao ligar a tela
+# set_battery_saver() {
     # $1: 1 = ativar, 0 = desativar
-    settings put global low_power "$1" 2>/dev/null
-}
+    # settings put global low_power "$1" 2>/dev/null
+# }
+# ============================
 
 toggle_sensor_privacy() {
-    MAX_ATTEMPTS=100
+    MAX_ATTEMPTS=150
     ATTEMPT=0
 
     while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
@@ -84,8 +89,8 @@ lock_sensors() {
     if [ ! -f "$STATE_FILE" ]; then
         service call sensor_privacy $SERVICE_CODE i32 1
         echo "1" > "$STATE_FILE"
-        set_battery_saver 1
-        notify "Sensor Privacy" "Tela desligada — microfone e câmera BLOQUEADOS, economia de bateria ATIVADA"
+        # set_battery_saver 1
+        # notify "Sensor Privacy" "Tela desligada — microfone e câmera BLOQUEADOS, economia de bateria ATIVADA"
     fi
 }
 
@@ -97,8 +102,8 @@ unlock_sensors() {
     if [ -f "$STATE_FILE" ]; then
         service call sensor_privacy $SERVICE_CODE i32 0
         rm -f "$STATE_FILE"
-        set_battery_saver 0
-        notify "Sensor Privacy" "Tela ligada — microfone e câmera LIBERADOS, economia de bateria DESATIVADA"
+        # set_battery_saver 0
+        # notify "Sensor Privacy" "Tela ligada — microfone e câmera LIBERADOS, economia de bateria DESATIVADA"
     fi
 }
 
