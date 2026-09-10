@@ -56,6 +56,11 @@ set_location() {
     settings put secure location_mode "$1" 2>/dev/null
 }
 
+# Função de desliga o bletooth ao desligar a tela. Por quê? porque eu quero kkkk
+set_bluetooth() {
+    cmd bluetooth_manager disable
+}
+
 toggle_sensor_privacy() {
     MAX_ATTEMPTS=50
     ATTEMPT=0
