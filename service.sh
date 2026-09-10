@@ -58,7 +58,8 @@ set_location() {
 
 # Função de desliga o bletooth ao desligar a tela. Por quê? porque eu quero kkkk
 set_bluetooth() {
-    cmd bluetooth_manager disable "$1" 2>/dev/null
+    # $1: disable = desativar, enable = ativar
+    cmd bluetooth_manager disable
 }
 
 toggle_sensor_privacy() {
