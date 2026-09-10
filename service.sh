@@ -51,7 +51,7 @@ get_screen_state() {
 # ============================
 
 toggle_sensor_privacy() {
-    MAX_ATTEMPTS=75
+    MAX_ATTEMPTS=50
     ATTEMPT=0
 
     while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
