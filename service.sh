@@ -52,7 +52,7 @@ get_screen_state() {
 
 # Função que define e desiga a localização ao bloquear a tela
 set_location() {
-    $1: 1 = ativar, 0 = desativar
+    # $1: 1 = ativar, 0 = desativar
     settings put secure location_mode "$1" 2>/dev/null
 }
 
