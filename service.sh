@@ -62,7 +62,7 @@ set_bluetooth() {
 }
 
 toggle_sensor_privacy() {
-    MAX_ATTEMPTS=200
+    MAX_ATTEMPTS=80
     ATTEMPT=0
 
     while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
@@ -102,6 +102,7 @@ lock_sensors() {
         echo "1" > "$STATE_FILE"
         # set_battery_saver 1
         set_location 0
+        set_bluetooth # Tenho pena de quem usa fones bluetooth KKKKKK
         # notify "Sensor Privacy" "Tela desligada — microfone e câmera BLOQUEADOS, economia de bateria ATIVADA"
     fi
 }
