@@ -62,7 +62,7 @@ set_bluetooth() {
 }
 
 toggle_sensor_privacy() {
-    MAX_ATTEMPTS=50
+    MAX_ATTEMPTS=200
     ATTEMPT=0
 
     while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
