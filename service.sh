@@ -50,6 +50,12 @@ get_screen_state() {
 # }
 # ============================
 
+# Função que define e desiga a localização ao bloquear a tela
+set_location() {
+    $1: 1 = ativar, 0 = desativar
+    settings put secure location_mode "$1" 2>/dev/null
+}
+
 toggle_sensor_privacy() {
     MAX_ATTEMPTS=50
     ATTEMPT=0
@@ -90,6 +96,7 @@ lock_sensors() {
         service call sensor_privacy $SERVICE_CODE i32 1
         echo "1" > "$STATE_FILE"
         # set_battery_saver 1
+        set_location 0
         # notify "Sensor Privacy" "Tela desligada — microfone e câmera BLOQUEADOS, economia de bateria ATIVADA"
     fi
 }
